@@ -10,22 +10,42 @@
         {
             this.brand = brand;
             this.model = model;
-            this.registrationNumber = registrationNumber;
+            RegistrationNumber = registrationNumber;
         }
 
-        public string GetBrand()
+        public string Brand
         {
-            return brand;
+            get
+            {
+                return brand;
+            }
         }
 
-        public string GetModel()
+        public string Model
         {
-            return model;
+            get
+            {
+                return model;
+            }
         }
 
-        public string GetRegistrationNumber()
+        public string RegistrationNumber
         {
-            return registrationNumber;
+            get
+            {
+                return registrationNumber;
+            }
+            set
+            {
+                if (value.Length > 6)
+                {
+                    registrationNumber = value.Substring(0, 6);
+                }
+                else
+                {
+                    registrationNumber = value;
+                }
+            }
         }
 
     }
