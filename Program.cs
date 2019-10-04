@@ -16,7 +16,6 @@ namespace CarSimulator
 
             while (shouldNotExit)
             {
-
                 WriteLine("1. Add car");
                 WriteLine("2. List cars");
                 WriteLine("3. Simulate speed");
@@ -39,7 +38,11 @@ namespace CarSimulator
 
                         string model = ReadLine();
 
-                        Car newCar = new Car(brand, model);
+                        Write("Registration number: ");
+
+                        string registrationNumber = ReadLine();
+
+                        Car newCar = new Car(brand, model, registrationNumber);
 
                         carList[carListCurrentIndexPosition++] = newCar; 
 
@@ -48,14 +51,18 @@ namespace CarSimulator
                     case ConsoleKey.D2:
                     case ConsoleKey.NumPad2:
 
-                        WriteLine("Brand        Model");
-                        WriteLine("------------------------");
+                        Write("Brand".PadRight(15, ' '));
+                        Write("Model".PadRight(15, ' '));
+                        WriteLine("RegistrationNumber");
+                        WriteLine("--------------------------------------------------");
 
                         foreach (Car car in carList)
                         {
                             if (car == null) continue;
 
-                            WriteLine($"{car.GetBrand()}        {car.GetModel()}");
+                            Write($"{car.GetBrand()}".PadRight(15, ' '));
+                            Write($"{car.GetModel()}".PadRight(15, ' '));
+                            WriteLine($"{car.GetRegistrationNumber()}");
                         }
 
                         WriteLine("");
